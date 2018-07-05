@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The header for our theme.
  *
@@ -12,58 +13,59 @@
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-<meta charset="<?php bloginfo( 'charset' ); ?>">
+<meta charset="<?php bloginfo('charset'); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="HandheldFriendly" content="true">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <?php if (get_theme_mod('favicon', '') != null) { ?>
-<link rel="icon" type="image/png" href="<?php echo esc_url( get_theme_mod('favicon', '') ); ?>" />
-<?php } ?>
+<link rel="icon" type="image/png" href="<?php echo esc_url(get_theme_mod('favicon', '')); ?>" />
+<?php 
+} ?>
 <?php wp_head(); ?>
 
 <?php
   
 	// Primary Font
-	$setting = 'primary-font';
-	$mod = get_theme_mod( $setting, customizer_library_get_default( $setting ) );
-	$stack = customizer_library_get_font_stack( $mod );
+$setting = 'primary-font';
+$mod = get_theme_mod($setting, customizer_library_get_default($setting));
+$stack = customizer_library_get_font_stack($mod);
 
-	if ( $mod != customizer_library_get_default( $setting ) ) {
+if ($mod != customizer_library_get_default($setting)) {
 
-		Customizer_Library_Styles()->add( array(
-			'selectors' => array(
-				'.primary'
-			),
-			'declarations' => array(
-				'font-family' => $stack
-			)
-		) );
+	Customizer_Library_Styles()->add(array(
+		'selectors' => array(
+			'.primary'
+		),
+		'declarations' => array(
+			'font-family' => $stack
+		)
+	));
 
-	}
+}
 
 	// Secondary Font
-	$setting2 = 'secondary-font';
-	$mod2 = get_theme_mod( $setting2, customizer_library_get_default( $setting2 ) );
-	$stack2 = customizer_library_get_font_stack( $mod2 );
+$setting2 = 'secondary-font';
+$mod2 = get_theme_mod($setting2, customizer_library_get_default($setting2));
+$stack2 = customizer_library_get_font_stack($mod2);
 
-	if ( $mod2 != customizer_library_get_default( $setting2 ) ) {
+if ($mod2 != customizer_library_get_default($setting2)) {
 
-		Customizer_Library_Styles()->add( array(
-			'selectors' => array(
-				'.secondary'
-			),
-			'declarations' => array(
-				'font-family' => $stack2
-			)
-		) );
+	Customizer_Library_Styles()->add(array(
+		'selectors' => array(
+			'.secondary'
+		),
+		'declarations' => array(
+			'font-family' => $stack2
+		)
+	));
 
-	}
+}
 
 	// Theme Color
-	$primary_color = get_theme_mod('primary-color', '#0091cd');
-	$secondary_color = get_theme_mod('secondary-color', '#004b79');
-	$link_hover_color = get_theme_mod('link-hover-color', '#ff0000');		
+$primary_color = get_theme_mod('primary-color', '#0091cd');
+$secondary_color = get_theme_mod('secondary-color', '#004b79');
+$link_hover_color = get_theme_mod('link-hover-color', '#ff0000');
 
 ?>
 <style type="text/css" media="all">
@@ -178,23 +180,24 @@
 			<nav id="primary-nav" class="main-navigation">
 
 				<?php 
-					if ( has_nav_menu( 'primary' ) ) {
-						wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'menu_class' => 'sf-menu' ) );
-					} else {
+			if (has_nav_menu('primary')) {
+				wp_nav_menu(array('theme_location' => 'primary', 'menu_id' => 'primary-menu', 'menu_class' => 'sf-menu'));
+			} else {
 				?>
 
 					<ul id="primary-menu" class="sf-menu">
 						<li><a href="<?php echo home_url(); ?>/wp-admin/nav-menus.php"><?php echo __('Add menu for: Primary Menu', 'newsnow-pro'); ?></a></li>
 					</ul><!-- .sf-menu -->
 
-				<?php } ?>
+				<?php 
+		} ?>
 
 			</nav><!-- #primary-nav -->	
 
-			<?php if ( get_theme_mod('header-search-on', true) ) : ?>
+			<?php if (get_theme_mod('header-search-on', true)) : ?>
 
 				<div class="header-search">
-					<form id="searchform" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+					<form id="searchform" method="get" action="<?php echo esc_url(home_url('/')); ?>">
 						<input type="search" name="s" class="search-input" placeholder="<?php esc_html_e('Search...', 'newsnow-pro'); ?>" autocomplete="off">
 						<button type="submit" class="search-submit"><span class="genericon genericon-search"></span></button>		
 					</form>
@@ -211,31 +214,31 @@
 			<div class="container">
 
 			<div class="site-branding">
-
-				<?php if (get_theme_mod('logo', get_template_directory_uri().'/assets/img/logo.png') != null) { ?>
+				<?php if (get_theme_mod('logo', get_template_directory_uri() . '/assets/img/logo.png') != null) { ?>
 				
 				<div id="logo">
-					<span class="helper"></span>
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-						<img src="<?php echo get_theme_mod('logo', get_template_directory_uri().'/assets/img/logo.png'); ?>" alt=""/>
+					<a href="<?php echo esc_url(home_url('/')); ?>" rel="home">
+						<img src="<?php echo get_theme_mod('logo', get_template_directory_uri() . '/assets/img/logo.png'); ?>" alt=""/>
 					</a>
 				</div><!-- #logo -->
 
-				<?php } else { ?>
+				<?php 
+		} else { ?>
 
 				<div class="site-title">
 					<h1><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
 				</div><!-- .site-title -->
 				
 				<div class="site-description">
-					<?php  echo get_bloginfo( 'description' ); ?>
+					<?php echo get_bloginfo('description'); ?>
 				</div><!-- .site-description -->				
 
-				<?php } ?>
+				<?php 
+		} ?>
 
 			</div><!-- .site-branding -->
 
-			<?php dynamic_sidebar( 'header-ad' ); ?>
+			<?php dynamic_sidebar('header-ad'); ?>
 
 			<span class="mobile-menu-icon">
 				<span class="menu-icon-open"><?php echo __('Menu', 'newsnow-pro'); ?></span>
@@ -253,16 +256,17 @@
 			<nav id="secondary-nav" class="secondary-navigation">
 
 				<?php 
-					if ( has_nav_menu( 'secondary' ) ) {
-						wp_nav_menu( array( 'theme_location' => 'secondary', 'menu_id' => 'secondary-menu', 'menu_class' => 'sf-menu' ) );
-					} else {
+			if (has_nav_menu('secondary')) {
+				wp_nav_menu(array('theme_location' => 'secondary', 'menu_id' => 'secondary-menu', 'menu_class' => 'sf-menu'));
+			} else {
 				?>
 
 					<ul id="secondary-menu" class="sf-menu">
 						<li><a href="<?php echo home_url(); ?>/wp-admin/nav-menus.php"><?php echo __('Add menu for: Secondary Menu', 'newsnow-pro'); ?></a></li>
 					</ul><!-- .sf-menu -->
 
-				<?php } ?>
+				<?php 
+		} ?>
 
 			</nav><!-- #secondary-nav -->
 
@@ -276,35 +280,35 @@
 
 			<?php 
 
-				if ( has_nav_menu( 'primary' ) ) {
+		if (has_nav_menu('primary')) {
 
-					echo '<div class="menu-left">';
-					echo '<h3>' . get_theme_mod('primary-nav-heading', __('Pages', 'newsnow-pro')) . '</h3>';
+			echo '<div class="menu-left">';
+			echo '<h3>' . get_theme_mod('primary-nav-heading', __('Pages', 'newsnow-pro')) . '</h3>';
 
-					wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-mobile-menu', 'menu_class' => '', 'depth' => 1 ) );
+			wp_nav_menu(array('theme_location' => 'primary', 'menu_id' => 'primary-mobile-menu', 'menu_class' => '', 'depth' => 1));
 
-					echo "</div>";
+			echo "</div>";
 
-				}
+		}
 
-				if ( has_nav_menu( 'secondary' ) ) {
+		if (has_nav_menu('secondary')) {
 
-					echo '<div class="menu-right">';
-					echo '<h3>' . get_theme_mod('secondary-nav-heading', __('Categories', 'newsnow-pro')) . '</h3>';
+			echo '<div class="menu-right">';
+			echo '<h3>' . get_theme_mod('secondary-nav-heading', __('Categories', 'newsnow-pro')) . '</h3>';
 
-					wp_nav_menu( array( 'theme_location' => 'secondary', 'menu_id' => 'secondary-mobile-menu', 'menu_class' => '', 'depth' => 1 ) );
+			wp_nav_menu(array('theme_location' => 'secondary', 'menu_id' => 'secondary-mobile-menu', 'menu_class' => '', 'depth' => 1));
 
-					echo "</div>";
+			echo "</div>";
 
-				}
+		}
 
-			?>
+		?>
 
 			</div><!-- .container -->
 
 		</div><!-- .mobile-menu -->	
 
-		<?php if ( get_theme_mod('header-search-on', true) ) : ?>
+		<?php if (get_theme_mod('header-search-on', true)) : ?>
 			
 			<span class="search-icon">
 				<span class="genericon genericon-search"></span>
